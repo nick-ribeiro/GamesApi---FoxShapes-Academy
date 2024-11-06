@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database'); // Certifique-se de que o sequelize está configurado corretamente.
+const sequelize = require('../config/database');
 
 const Achivement = sequelize.define('Achivement', {
     id: {
