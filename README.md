@@ -50,21 +50,22 @@ Abaixo está um exemplo da implementação das rotas da API:
 
 #### Progresso (Progress)
 - **GET** `/progress`: Retorna todos os registros de progresso.
-- **POST** `/progress/:usuarioId/level/:nivelId`: Registra o progresso de um usuário em um nível.
-- **GET** `/progress/:usuarioId`: Retorna o progresso específico de um usuário.
+- **POST** `/progress/user/:usuario_id/levels/:nivel_id`: Registra o progresso de um usuário em um nível.
+- **GET** `/progress/user/:usuario_id`: Retorna o progresso específico de um usuário.
 - **PUT** `/progress/{id}`: Atualiza um progresso existente.
 - **DELETE** `/progress/{id}`: Deleta um progresso.
 
 #### Configurações (Configurations)
-- **GET** `/configurations/:usuario_id`: Retorna a configuração específica de um usuário.
+- **GET** `/configurations`: Retorna todos os registros de configurações.
+- **GET** `/configurations/user/:usuario_id`: Retorna a configuração específica de um usuário.
 - **POST** `/configurations`: Registra a configuração de um usuário.
 - **PUT** `/configurations/{id}`: Atualiza uma configuração existente.
 - **DELETE** `/configurations/{id}`: Deleta uma configuração.
 
 #### Feedback (Feedbacks)
 - **GET** `/feedbacks`: Retorna todos os registros de feedback.
-- **POST** `/feedbacks/:usuario_id/nivel/:nivel_id`: Registra o feedback de um usuário em um nível.
-- **GET** `/feedbacks/:usuarioId`: Retorna o feedback específico de um usuário.
+- **POST** `/feedbacks/user/:usuario_id/levels/:nivel_id`: Registra o feedback de um usuário em um nível.
+- **GET** `/feedbacks/user/:usuario_id`: Retorna o feedback específico de um usuário.
 - **PUT** `/feedbacks/{id}`: Atualiza um feedback existente.
 - **DELETE** `/feedbacks/{id}`: Atualiza um feedback existente.
 
