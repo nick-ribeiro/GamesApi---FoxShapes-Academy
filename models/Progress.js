@@ -1,5 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
+const User = require('../models/User');
+const Level = require('../models/Level');
 
 const Progress = sequelize.define('Progress', {
     id: {
@@ -31,5 +33,11 @@ const Progress = sequelize.define('Progress', {
     tableName: 'progress', // Nome da tabela no banco de dados
     timestamps: false,
 });
+
+// Definindo o relacionamento
+Progress.belongsTo(User, { foreignKey: 'usuario_id' });
+
+// Definindo o relacionamento
+Progress.belongsTo(Level, { foreignKey: 'nivel_id' });
 
 module.exports = Progress;

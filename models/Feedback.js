@@ -1,5 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
+const User = require('../models/User');
+const Level = require('../models/Level');
 
 const Feedback = sequelize.define('Feedback', {
     id: {
@@ -27,5 +29,11 @@ const Feedback = sequelize.define('Feedback', {
     tableName: 'feedbacks',
     timestamps: false,
 });
+
+// Definindo o relacionamento
+Feedback.belongsTo(User, { foreignKey: 'usuario_id' });
+
+// Definindo o relacionamento
+Feedback.belongsTo(Level, { foreignKey: 'nivel_id' });
 
 module.exports = Feedback;

@@ -3,8 +3,23 @@ class ConfigurationsController {
         this.configurationsDao = configurationsDao;
     }
 
+    // Retorna todos os achievements
+    async getConfiguration(req, res) {
+        try {
+            const configuration = await this.configurationsDao.getAll(); // Aguarda a resposta da consulta assíncrona
+            if (configuration && configuration.length > 0) {
+                return res.status(200).json(configuration);
+            } else {
+                return res.status(404).json({ error: "Nenhuma configuração encontrada" });
+            }
+        } catch (error) {
+            console.error("Erro ao buscar configurações:", error);
+            return res.status(500).json({ error: "Erro ao buscar configurações" });
+        }
+    }
+
     // Retorna todas as configurações de um usuário
-    async getConfigurations(req, res) {
+    async getConfigurationByUser(req, res) {
         const usuarioId = req.params.usuario_id;
         try {
             const configurations = await this.configurationsDao.getAllByUsuario(usuarioId);  // Aguarda a resposta da consulta

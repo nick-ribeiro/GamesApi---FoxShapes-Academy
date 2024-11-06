@@ -2,6 +2,14 @@ const Progress = require('../models/Progress'); // Importa o modelo Progress
 
 class ProgressDAO {
 
+    async getAll() {
+        try {
+            return await Progress.findAll(); // Retorna todos os progressos
+        } catch (error) {
+            console.error("Erro ao buscar todos os progressos:", error);
+        }
+    }
+
     // Obtém todo o progresso de um usuário
     async getAllByUsuario(usuarioId) {
         try {

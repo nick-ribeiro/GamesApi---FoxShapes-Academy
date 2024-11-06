@@ -3,6 +3,14 @@ const User = require('./User'); // Importa o modelo User
 
 class ConfigurationsDAO {
 
+    async getAll() {
+        try {
+            return await Configuration.findAll(); // Retorna todos as configurações
+        } catch (error) {
+            console.error("Erro ao buscar todos as configurações:", error);
+        }
+    }
+
     // Obtém todas as configurações de um usuário
     async getAllByUsuario(usuarioId) {
         try {

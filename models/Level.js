@@ -1,7 +1,5 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
-const Feedback = require('./Feedback');  // Importa o modelo de Feedback
-const Progress = require('./Progress');  // Importa o modelo de Progress
 
 const Level = sequelize.define('Level', {
     id: {
@@ -26,11 +24,5 @@ const Level = sequelize.define('Level', {
     tableName: 'levels',
     timestamps: false,
 });
-
-// Relacionamento: Um Level pode ter muitos Feedbacks
-Level.hasMany(Feedback, { foreignKey: 'nivel_id' });
-
-// Relacionamento: Um Level pode ter muitos progressos
-Level.hasMany(Progress, { foreignKey: 'nivel_id' });
 
 module.exports = Level;

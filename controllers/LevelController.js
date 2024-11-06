@@ -5,7 +5,7 @@ class LevelController {
     }
 
     // Retorna todos os níveis
-    async getLevel(req, res) {
+    async getLevels(req, res) {
         try {
             const levels = await this.levelDao.getAll(); // Aguarda a resposta da consulta assíncrona
             if (levels && levels.length > 0) {

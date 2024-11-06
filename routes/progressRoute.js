@@ -6,11 +6,14 @@ const ProgressController = require('../controllers/ProgressController');
 const progressDao = new ProgressDAO();
 const progressController = new ProgressController(progressDao);
 
+// Retorna todos os níveis
+router.get('/', (req, res, next) => progressController.getProgress(req, res, next));
+
 // Retorna todo o progresso de um usuário
-router.get('/:usuarioId', (req, res) => progressController.getProgress(req, res));
+router.get('/user/:usuario_id', (req, res) => progressController.getProgressByUser(req, res));
 
 // Retorna o progresso de um usuário em um nível específico
-router.get('/:usuarioId/level/:nivelId', (req, res) => progressController.getProgressByLevel(req, res));
+router.get('/user/:usuario_id/levels/:nivel_id', (req, res) => progressController.getProgressByLevel(req, res));
 
 // Cria um novo progresso
 router.post('/', (req, res) => progressController.createProgress(req, res));

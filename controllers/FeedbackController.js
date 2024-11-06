@@ -4,6 +4,21 @@ class FeedbackController {
         this.feedbackDao = feedbackDao;
     }
 
+    // Retorna todos os achievements
+    async getFeedback(req, res) {
+        try {
+            const feedback = await this.feedbackDao.getAll(); // Aguarda a resposta da consulta assíncrona
+            if (feedback && feedback.length > 0) {
+                return res.status(200).json(feedback);
+            } else {
+                return res.status(404).json({ error: "Nenhum feedback encontrado" });
+            }
+        } catch (error) {
+            console.error("Erro ao buscar feedbacks:", error);
+            return res.status(500).json({ error: "Erro ao buscar feedbacks" });
+        }
+    }
+
     // Retorna todos os feedbacks de um usuário
     async getFeedbacks(req, res) {
         const usuarioId = req.params.usuario_id;

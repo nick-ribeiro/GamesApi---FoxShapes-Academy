@@ -4,6 +4,14 @@ const Level = require('./Level');
 
 class FeedbackDAO {
 
+    async getAll() {
+        try {
+            return await Feedback.findAll(); // Retorna todos os feedbacks
+        } catch (error) {
+            console.error("Erro ao buscar todos os feedbacks:", error);
+        }
+    }
+
     // Obtém todos os feedbacks de um usuário
     async getAllByUsuario(usuarioId) {
         try {

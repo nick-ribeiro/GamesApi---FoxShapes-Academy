@@ -4,9 +4,23 @@ class ProgressController {
         this.progressDao = progressDao;
     }
 
-    // Retorna todo o progresso de um usuário
     async getProgress(req, res) {
-        const usuarioId = req.params.usuarioId;
+        try {
+            const progress = await this.progressDao.getAll(); // Aguarda a resposta da consulta assíncrona
+            if (progress && progress.length > 0) {
+                return res.status(200).json(progress);
+            } else {
+                return res.status(404).json({ error: "Nenhum progresso encontrado" });
+            }
+        } catch (error) {
+            console.error("Erro ao buscar progressos:", error);
+            return res.status(500).json({ error: "Erro ao buscar progressos" });
+        }
+    }
+
+    // Retorna todo o progresso de um usuário
+    async getProgressByUser(req, res) {
+        const usuarioId = req.params.usuario_id;
         try {
             const progress = await this.progressDao.getAllByUsuario(usuarioId);
             if (progress && progress.length > 0) {
@@ -22,8 +36,8 @@ class ProgressController {
 
     // Retorna o progresso de um usuário em um nível específico
     async getProgressByLevel(req, res) {
-        const usuarioId = req.params.usuarioId;
-        const nivelId = req.params.nivelId;
+        const usuarioId = req.params.usuario_id;
+        const nivelId = req.params.nivel_id;
         try {
             const progress = await this.progressDao.getByUsuarioAndNivel(usuarioId, nivelId);
             if (progress) {
